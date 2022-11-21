@@ -26,13 +26,13 @@ our translated propositions.
 ## Decision Layer vs Compliance Layer vs Data Perspective
 
 ### Decision layer
-[decision_layer](./assets/decision_layer_venn.png)
+![decision_layer](./assets/decision_layer_venn.png)
 
 ### Compliance Layer
-[compliance_layer](./assets/compliance_venn.png)
+![compliance_layer](./assets/compliance_venn.png)
 
 ### Data perspective
-[data_perspective](./assets/data_perspective_venn.png)
+![data_perspective](./assets/data_venn.png)
 # Evaluation
 
 To run the jupyter notebook for reproducing the testing conducted, ensure that
