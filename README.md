@@ -8,9 +8,9 @@ decision layer of a process model.
 
 Process conformance measures aim to quantify the quality of a process model 
 compared to an event log, in terms of the modelled behaviour and the observed 
-behaviour.Governing these measures is a collection of propositions or axioms, 
-that clarify the interpretation of measurements between a process model and event logs.
-However, these proposition have only considered desirable qualities for process 
+behaviour. Governing these measures is a collection of propositions or axioms, 
+that clarify the interpretation of measurements between a process model and event 
+logs. However, these proposition have only considered desirable qualities for process 
 conformance measures when considering a language of process activities (a set 
 containing sequences of allowable steps focused on process activities) from a 
 process model and event log. In this paper, we set out to extend this discussion 
@@ -19,7 +19,7 @@ process activities of a process. We contribute new quality propositions for proc
 conformance that aim to include the data perspective of process when comparing a 
 process model and an event log. In particular, we focus on quality propositions 
 that would allow process conformance to offer a rich comparison of decision mining 
-techniques.Finally, we propose two data-aware process conformance measures and 
+techniques. Finally, we propose two data-aware process conformance measures and 
 evaluate our proposed measures alongside existing measures do indeed conform to 
 our translated propositions.
 
