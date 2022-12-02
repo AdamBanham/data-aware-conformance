@@ -1,27 +1,17 @@
 # Data-Aware Process Conformance:
-## Translating Process Conformance Propositions
+## Propositions and Measures
 An unpublished evaluation for data-aware process conformance concerned with the 
 decision layer of a process model.
-
-
 ## Abstract
-
-Process conformance measures aim to quantify the quality of a process model 
-compared to an event log, in terms of the modelled behaviour and the observed 
-behaviour. Governing these measures is a collection of propositions or axioms, 
-that clarify the interpretation of measurements between a process model and event 
-logs. However, these proposition have only considered desirable qualities for process 
-conformance measures when considering a language of process activities (a set 
-containing sequences of allowable steps focused on process activities) from a 
-process model and event log. In this paper, we set out to extend this discussion 
-to a more expressive language which  considers the data perspective, choices and 
-process activities of a process. We contribute new quality propositions for process 
-conformance that aim to include the data perspective of process when comparing a 
-process model and an event log. In particular, we focus on quality propositions 
-that would allow process conformance to offer a rich comparison of decision mining 
-techniques. Finally, we propose two data-aware process conformance measures and 
-evaluate our proposed measures alongside existing measures do indeed conform to 
-our translated propositions.
+Process conformance measures (e.g. recall, precision, generalisation, simplicity) aim to quantify the quality of a process model (described) compared to an event log (observed), typically in terms of described and observed behaviour.
+Guiding these measures is a collection of propositions or axioms, that establish the interpretation of measurements between a process model and an event log.
+However, these propositions only consider desirable qualities for process conformance measures when comparing a language of process activities between a process model and an event log.
+Furthermore, in our search of the literature, we saw little work that provided a precise interpretation for measuring the data perspective of a process or how this perspective should be considered for decision mining techniques.
+Therefore, in this paper, we extend process conformance to consider the data perspective in a process by considering a specialisation we refer to as the decision view of a process.
+To standardise and formalise the decision view of a process, we consider where choices occur in a process, the described guards that enable choices and how observed data is used to form guards.
+We propose 13 quality propositions for data-aware process conformance measures that consider an event log and a process model.
+Furthermore, these propositions provide a precise interpretation of the decision view of a process.
+To validate our propositions, we present two data-aware process conformance measures for recall and precision; then, we evaluate our propositions by applying them to both new, and to existing data-aware conformance measures.
 
 ## Decision Layer vs Compliance Layer vs Data Perspective
 
