@@ -23,7 +23,7 @@ conformance is supported by existing metrics.
 ## Evaluation
 
 To generate the logs used for counter-examples, create a virtual python environment using pipenv and then run the `generate.py` script in the root directory.
-All data (logs and models) used as counter-examples for each axiom can be found in the `axioms` folder, where for each axiom a sub folder contains the relevant logs and models.
+All data (logs and models) used as counter-examples for each axiom can be found in the `axioms` folder, where for each axiom has a sub folder containing the relevant logs and models.
 Our record of analysis for all four possible candidiates in the submitted paper can be found in the excel spreadsheet `axioms_counter_examples.xlsx`, in the root directory.
 
 ### Model generation
