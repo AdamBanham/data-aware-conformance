@@ -1,4 +1,4 @@
-# A previous evaluation for published propositions for data-aware conformance
+# A previous evaluation of propositions for data-aware conformance
 
 An unpublished evaluation for data-aware process conformance concerned with the decision layer of a process model.
 It included both propositions and two proposed measures.
