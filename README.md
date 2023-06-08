@@ -1,8 +1,8 @@
-# Data-Aware Process Conformance:
-## Propositions and Measures
-An unpublished evaluation for data-aware process conformance concerned with the 
-decision layer of a process model.
+# Data-Aware Process Conformance: Nine Axioms
+
+An unpublished evaluation for data-aware process conformance using counter-examples for axioms.
 ## Abstract
+
 Process conformance measures (e.g. recall, precision, generalisation, simplicity) aim to quantify the quality of a process model (described) compared to an event log (observed), typically in terms of described and observed behaviour.
 Guiding these measures is a collection of propositions or axioms, that establish the interpretation of measurements between a process model and an event log.
 However, these propositions only consider desirable qualities for process conformance measures when comparing a language of process activities between a process model and an event log.
@@ -13,25 +13,11 @@ We propose 13 quality propositions for data-aware process conformance measures t
 Furthermore, these propositions provide a precise interpretation of the decision view of a process.
 To validate our propositions, we present two data-aware process conformance measures for recall and precision; then, we evaluate our propositions by applying them to both new, and to existing data-aware conformance measures.
 
-## Decision Layer vs Compliance Layer vs Data Perspective
+## Evaluation
 
-### Decision layer
-![decision_layer](./assets/decision_layer_venn.png)
+To generate the logs used for counter-examples, create a virtual python environment using pipenv and then run the `generate.py` script in the root directory.
+All data (logs and models) used as counter-examples for each axiom can be found in the `axioms` folder, where for each axiom a sub folder contains the relevant logs and models.
+Our record of analysis for all four possible candidiates in the submitted paper can be found in the excel spreadsheet `axioms_counter_examples.xlsx`, in the root directory.
 
-### Compliance Layer
-![compliance_layer](./assets/compliance_venn.png)
-
-### Data perspective
-![data_perspective](./assets/data_venn.png)
-# Evaluation
-
-To run the jupyter notebook for reproducing the testing conducted, ensure that
-you use a python 3.9.7 installation and reproduce the a virtual environment using 
-pipenv, i.e. pipenv install from the root of this repo. See pipenv for more 
-information.
-
-All event logs used in the evaluation (and the script to generate logs) can be 
-found in the folder `logs`.
-All process models used in the evaluation were generated using ProM and the "Edit 
-DPN (Text Language based)" plug-in authored by F.Mannhardt and can be found in
-the `models` folder. 
+### Model generation
+All models were manually created for each counter-example using ProM and the "Edit DPN (Text Language based)" plug-in authored by F.Mannhardt.
