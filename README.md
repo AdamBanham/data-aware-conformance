@@ -3,15 +3,22 @@
 An unpublished evaluation for data-aware process conformance using counter-examples for axioms.
 ## Abstract
 
-Process conformance measures (e.g. recall, precision, generalisation, simplicity) aim to quantify the quality of a process model (described) compared to an event log (observed), typically in terms of described and observed behaviour.
-Guiding these measures is a collection of propositions or axioms, that establish the interpretation of measurements between a process model and an event log.
-However, these propositions only consider desirable qualities for process conformance measures when comparing a language of process activities between a process model and an event log.
-Furthermore, in our search of the literature, we saw little work that provided a precise interpretation for measuring the data perspective of a process or how this perspective should be considered for decision mining techniques.
-Therefore, in this paper, we extend process conformance to consider the data perspective in a process by considering a specialisation we refer to as the decision view of a process.
-To standardise and formalise the decision view of a process, we consider where choices occur in a process, the described guards that enable choices and how observed data is used to form guards.
-We propose 13 quality propositions for data-aware process conformance measures that consider an event log and a process model.
-Furthermore, these propositions provide a precise interpretation of the decision view of a process.
-To validate our propositions, we present two data-aware process conformance measures for recall and precision; then, we evaluate our propositions by applying them to both new, and to existing data-aware conformance measures.
+Process mining studies the observed historical executions (i.e. an event log) of 
+business processes to uncover their behaviour. Process conformance metrics aim 
+to quantify the quality of a process model compared with an event log, typically 
+in terms of described and observed behaviours. Guiding these metrics is a collection 
+of propositions, that establish the basis for interpreting conformance measurements 
+between a process model and an event log. Existing work on conformance propositions has
+studied how to evaluate process conformance metrics against the qualities instilled 
+by these propositions. However, much of the existing discussion has only considered 
+control-flow aspects of a process. Thus, in this paper, we consider data-aware process 
+conformance, which studies how the observed data is used to form expressions. 
+To date, there been little discussion of the qualities that a data-aware conformance 
+measure should hold. Hence, it is challenging to quantify the quality of data-aware
+process models. Therefore, we propose nine quality axioms to trigger a discussion 
+on the qualities that should be instilled in data-aware process conformance measures. 
+To address these axioms, we evaluate whether our notion of data-aware process
+conformance is supported by existing metrics.
 
 ## Evaluation
 
