@@ -7,7 +7,7 @@ from joblib import Parallel,delayed,Memory
 from tqdm import tqdm
 
 
-from expressions import ExpressionParser
+from unpublished.expressions import ExpressionParser
 
 
 class VariableDomain():
