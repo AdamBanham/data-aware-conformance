@@ -47,6 +47,8 @@ AX_9_LOGS = [
     in range(1,4)
 ]
 
+AX_RERUNS = 10
+
 def axiom_1():
     print("testing axiom 1 for unpublished measurement (grec_E).")
 
@@ -59,7 +61,7 @@ def axiom_3():
     for test_no,model_file in enumerate(AX_3_MODELS):
         results = []
         ctimes = []
-        for run in range(1,11):
+        for run in range(1,AX_RERUNS):
             info(f"computing run {run}...")
             model = parse_pnml_for_dpn(model_file)
             stime = time()
@@ -81,44 +83,68 @@ def axiom_3():
           " must be strictly increasing from left to right")
     info(f"outcome (mean,std) :: {mean_computes}")
 
+@enable_logging
 def axiom_4():
-    print("testing axiom 4 for proposal of guard-recall.")
+    info("testing axiom 4 for proposal of guard-recall.")
     results = []
     log = read_xes_complex(AX_4_LOG)
     model = parse_pnml_for_dpn(AX_4_MODEL)
-    for run in range(1,11):
-        print(f"computing run {run}...")
+    runtimes = []
+    for run in range(1,AX_RERUNS):
+        info(f"computing run {run}...")
+        stime = time()
         res = compute_guard_recall(log, model)
+        runtimes.append(time() - stime)
         results.append(res)
     mean = sum(results) / len(results)
     std = [ (res - mean) ** 2 for res in results ]
     std = sum(std) / len(std)
     std = sqrt(std)
-    print(f"results of testing axiom 4 are :: {mean=} | {std=}.")
-    print(f"unique results observed :: {set(results)}.") 
+    info(f"results of testing axiom 4 are :: {mean=} | {std=}.")
+    info(f"unique results observed :: {set(results)}.") 
+    runtimes = sum(runtimes)/len(runtimes)
+    info(f"average  compute time for runs :: {runtimes:.1f} seconds.")
+    info("testing completed for axiom four, to adhere the measure must " +
+         "return zero.")
+    info(f"outcomes :: {set(results)}")
 
+@enable_logging
 def axiom_6():
-    print("testing axiom 6 for proposal of guard-recall.")
+    info("testing axiom 6 for proposal of guard-recall.")
     model = parse_pnml_for_dpn(AX_6_MODEL)
+    mean_computes = []
+    mean_runtimes = []
     for test_no, logfile in enumerate(AX_6_LOGS):
         results = []
-        log = read_xes_complex(logfile)
-        for run in range(1,11):
-            print(f"computing run {run}...")
+        runtimes = []
+        for run in range(1,AX_RERUNS):
+            info(f"computing run {run}...")
+            log = read_xes_complex(logfile)
+            stime = time()
             res = compute_guard_recall(log, model)
+            runtimes.append(time() - stime)
             results.append(res)
         mean = sum(results) / len(results)
         std = [ (res - mean) ** 2 for res in results ]
         std = sum(std) / len(std)
         std = sqrt(std)
-        print(f"results for log {test_no+1} of axiom 6 are :: {mean=} | {std=}.")
-        print(f"unique results observed :: {set(results)}.")
+        runtimes = sum(runtimes) / len(runtimes)
+        info(f"results for log {test_no+1} of axiom 6 are :: {mean=} | {std=}.")
+        info(f"unique results observed :: {set(results)}.")
+        info(f"mean compute time between runs :: {runtimes:.1f} seconds")
+        mean_runtimes.append(f"{runtimes:.1f}")
+        mean_computes.append((mean,std))
+    info(f"average runtimes for tests : {mean_runtimes}")
+    info("testing completed for axiom six, to adhere the following series" + 
+          " must contain the same value for each step")
+    info(f"outcome (mean,std) :: {mean_computes}")
+
 
 def axiom_7():
     print("testing axiom 7 for unpublished measurement (gprec_F).")
     for test_no,model_file in enumerate(AX_7_MODELS):
         results = []
-        for run in range(1,11):
+        for run in range(1,AX_RERUNS):
             print(f"computing run {run}...")
             res = reasoning_precision(AX_7_LOG, model_file)
             results.append(res)
@@ -133,7 +159,7 @@ def axiom_8():
     print("testing axiom 8 for unpublished measurement (gprec_F).")
     for test_no,model_file in enumerate(AX_8_MODELS):
         results = []
-        for run in range(1,11):
+        for run in range(1,AX_RERUNS):
             print(f"computing run {run}...")
             res = reasoning_precision(AX_8_LOG, model_file)
             results.append(res)
@@ -148,7 +174,7 @@ def axiom_9():
     print("testing axiom 9 for unpublished measurement (gprec_F).")
     for test_no, logfile in enumerate(AX_9_LOGS):
         results = []
-        for run in range(1,11):
+        for run in range(1,AX_RERUNS):
             print(f"computing run {run}...")
             res = reasoning_precision(logfile, AX_9_MODEL)
             results.append(res)
@@ -161,8 +187,8 @@ def axiom_9():
 
 if __name__ == "__main__":
     axiom_3(debug=True)
-    # axiom_4()
-    # axiom_6()
+    axiom_4(debug=True)
+    axiom_6(debug=True)
     # axiom_7()
     # axiom_8()
     # axiom_9()
