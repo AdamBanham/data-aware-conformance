@@ -138,7 +138,7 @@
                <fill color="#FFFFFF"/>
             </graphics>
          </transition>
-         <transition guard="(d4&lt;0)" id="n12">
+         <transition guard="false" id="n12">
             <name>
                <text>H</text>
             </name>
@@ -150,7 +150,7 @@
                <fill color="#FFFFFF"/>
             </graphics>
          </transition>
-         <transition guard="(d1&gt;4)" id="n13">
+         <transition guard="(d1&gt;10)" id="n13">
             <name>
                <text>F</text>
             </name>
