@@ -39,6 +39,11 @@ AX_8_MODELS = [
     for i
     in range(1,5)
 ]
+AX_8_NEG_MODELS = [ 
+    join(AX_8_FOLD, f"ax8_model_{i}.pnml")
+    for i
+    in range(5,6)
+]
 AX_9_FOLD = join(AXS_FOLD, "axiom 9")
 AX_9_MODEL = join(AX_9_FOLD, "ax9_model_1.pnml")
 AX_9_LOGS = [ 
@@ -177,6 +182,9 @@ def axiom_8():
     log = read_xes_complex(AX_8_LOG)
     mean_computes = []
     mean_runtimes = []
+    mean_neg_computes = []
+    mean_neg_runtimes = []
+    # should be 1.0
     for test_no,model_file in enumerate(AX_8_MODELS):
         results = []
         runtimes = []
@@ -197,10 +205,34 @@ def axiom_8():
         info(f"mean compute time between runs :: {runtime:.1f} secs")
         mean_runtimes.append(runtime)
         mean_computes.append((mean, std))
-    info(f"average runtimes for tests : {mean_runtimes}")
+    # shouldn't be 1.0
+    for test_no,model_file in enumerate(AX_8_NEG_MODELS):
+        results = []
+        runtimes = []
+        for run in range(1,AX_RERUNS):
+            info(f"computing run {run}...")
+            stime = time()
+            res = compute_guard_precision(log, parse_pnml_for_dpn(model_file),
+                                          optimised=True)
+            runtimes.append(time() - stime)
+            results.append(res)
+        mean = sum(results) / len(results)
+        std = [ (res - mean) ** 2 for res in results ]
+        std = sum(std) / len(std)
+        std = sqrt(std)
+        info(f"results for model {test_no+1} of axiom 8 are :: {mean=} | {std=}.")
+        info(f"unique results observed :: {results}.")
+        runtime = sum(runtimes) / len(runtimes)
+        info(f"mean compute time between runs :: {runtime:.1f} secs")
+        mean_neg_runtimes.append(runtime)
+        mean_neg_computes.append((mean, std))
+    info(f"average runtimes for tests : {mean_runtimes+mean_neg_runtimes}")
     info("testing completed for axiom eight, to adhere the following series" + 
           " must only return the max of the measure (1.0)")
     info(f"outcome (mean,std) :: {mean_computes}")
+    info("Furthermore, to adhere the following series" + 
+          " must not return the max of the measure (1.0)")
+    info(f"outcome (mean,std) :: {mean_neg_computes}")
 
 @enable_logging
 def axiom_9():
@@ -234,18 +266,28 @@ def axiom_9():
     info(f"outcome (mean,std) :: {mean_computes}")
 
 @enable_logging
-def expression_test():
+def test():
+    from pmkoalas.models.transitiontree import construct_from_model
+    from pmkoalas.conformance.matching import construct_many_matching, ExpontentialPathWeighter
+
     log = read_xes_complex(AX_8_LOG)
-    model = parse_pnml_for_dpn(AX_8_MODELS[-1])
+    model = parse_pnml_for_dpn(AX_8_NEG_MODELS[-1])
+    tree = construct_from_model(model, longest_playout=4)
+    matching = construct_many_matching(log, tree)
+    for variant, inst in log:
+        w = ExpontentialPathWeighter(matching[variant])
+        for path in matching[variant]:
+            print(f"[{variant}-{path}] weight :: {w(path, variant)}")
     print(model)
     prec = compute_guard_precision(log, model, optimised=True)
     info(prec)
 
 if __name__ == "__main__":
+    # test(debug=True)
     # guard-recall testing
-    # axiom_3(debug=True)
-    # axiom_4(debug=True)
-    # axiom_6(debug=True)
+    axiom_3(debug=True)
+    axiom_4(debug=True)
+    axiom_6(debug=True)
     # guard-precision testing
     axiom_7(debug=True)
     axiom_8(debug=True)
