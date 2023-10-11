@@ -53,6 +53,7 @@ AX_9_LOGS = [
 ]
 
 AX_RERUNS = 11
+OPTIMISED_RUN = True
 
 def axiom_1():
     print("testing axiom 1 for unpublished measurement (grec_E).")
@@ -70,7 +71,7 @@ def axiom_3():
             info(f"computing run {run}...")
             model = parse_pnml_for_dpn(model_file)
             stime = time()
-            res = compute_guard_recall(log, model)
+            res = compute_guard_recall(log, model, optimised=OPTIMISED_RUN)
             ctimes.append(time() - stime)
             results.append(res)
         mean = sum(results) / len(results)
@@ -98,7 +99,7 @@ def axiom_4():
     for run in range(1,AX_RERUNS):
         info(f"computing run {run}...")
         stime = time()
-        res = compute_guard_recall(log, model)
+        res = compute_guard_recall(log, model, optimised=OPTIMISED_RUN)
         runtimes.append(time() - stime)
         results.append(res)
     mean = sum(results) / len(results)
@@ -126,7 +127,7 @@ def axiom_6():
             info(f"computing run {run}...")
             log = read_xes_complex(logfile)
             stime = time()
-            res = compute_guard_recall(log, model)
+            res = compute_guard_recall(log, model, optimised=OPTIMISED_RUN)
             runtimes.append(time() - stime)
             results.append(res)
         mean = sum(results) / len(results)
@@ -289,6 +290,7 @@ if __name__ == "__main__":
     axiom_4(debug=True)
     axiom_6(debug=True)
     # guard-precision testing
-    axiom_7(debug=True)
-    axiom_8(debug=True)
-    axiom_9(debug=True)
+    # axiom_7(debug=True)
+    # axiom_8(debug=True)
+    # axiom_9(debug=True)
+    pass
