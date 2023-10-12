@@ -286,11 +286,11 @@ def test():
 if __name__ == "__main__":
     # test(debug=True)
     # guard-recall testing
-    axiom_3(debug=True)
-    axiom_4(debug=True)
-    axiom_6(debug=True)
+    # axiom_3(debug=True)
+    # axiom_4(debug=True)
+    # axiom_6(debug=True)
     # guard-precision testing
-    # axiom_7(debug=True)
-    # axiom_8(debug=True)
-    # axiom_9(debug=True)
+    axiom_7(debug=True)
+    axiom_8(debug=True)
+    axiom_9(debug=True)
     pass
