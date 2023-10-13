@@ -55,9 +55,6 @@ AX_9_LOGS = [
 AX_RERUNS = 11
 OPTIMISED_RUN = True
 
-def axiom_1():
-    print("testing axiom 1 for unpublished measurement (grec_E).")
-
 @enable_logging
 def axiom_3():
     info("testing axiom 3 for proposal of guard-recall.")

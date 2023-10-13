@@ -4,13 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pm4py = "*"
-joblib = "*"
-tqdm = "*"
-pyparsing = "*"
+yices = "*"
+z3-solver = "*"
+pm4py = "==2.2.19.2"
 
 [dev-packages]
-ipykernel = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"
