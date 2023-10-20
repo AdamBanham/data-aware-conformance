@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <log xes.version="1849-2016" xes.features="nested-attributes" xmlns="http://www.xes-standard.org/">
+	<extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext"/>
+	<extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext"/>
+	<global scope="trace">
+		<string key="concept:name" value="DEFAULT"/>
+	</global>
+	<global scope="event">
+		<string key="concept:name" value="DEFAULT"/>
+		<date key="time:timestamp" value="1970-01-01T10:00:00.000+10:00"/>
+	</global>
+	<classifier name="concept:name" keys="concept:name"/>
 	<string key="concept:name" value="DAC LOG THREE - ALPHA" />
 	<trace>
 		<string key="concept:name" value="trace 001" />
