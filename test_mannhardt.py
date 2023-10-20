@@ -50,12 +50,12 @@ AX_9_LOGS = [
     in range(1,4)
 ]
 
-AX_RERUNS = 2
+AX_RERUNS = 11
 OPTIMISED_RUN = True
 
 @enable_logging
 def axiom_3():
-    info("testing axiom 3 for proposal of guard-recall.")
+    info("testing axiom 3 for grec_M.")
     log = AX_3_LOG
     mean_computes = []
     mean_runtimes = []
@@ -85,7 +85,7 @@ def axiom_3():
 
 @enable_logging
 def axiom_4():
-    info("testing axiom 4 for proposal of guard-recall.")
+    info("testing axiom 4 for grec_M.")
     results = []
     log = AX_4_LOG
     model = AX_4_MODEL
@@ -110,7 +110,7 @@ def axiom_4():
 
 @enable_logging
 def axiom_6():
-    info("testing axiom 6 for proposal of guard-recall.")
+    info("testing axiom 6 for grec_M.")
     model = AX_6_MODEL
     mean_computes = []
     mean_runtimes = []
@@ -140,7 +140,7 @@ def axiom_6():
 
 @enable_logging
 def axiom_7():
-    info("testing axiom 7 for unpublished measurement (gprec_F).")
+    info("testing axiom 7 for gprec_M.")
     mean_runtimes = []
     mean_computes = []
     log = AX_7_LOG
@@ -171,7 +171,7 @@ def axiom_7():
 
 @enable_logging
 def axiom_8():
-    info("testing axiom 8 for unpublished measurement (gprec_F).")
+    info("testing axiom 8 for gprec_M.")
     log = AX_8_LOG
     mean_computes = []
     mean_runtimes = []
@@ -232,7 +232,7 @@ def axiom_8():
 
 @enable_logging
 def axiom_9():
-    info("testing axiom 9 for unpublished measurement (gprec_F).")
+    info("testing axiom 9 for gprec_M.")
     mean_computes = []
     mean_runtimes = []
     for test_no, logfile in enumerate(AX_9_LOGS):
@@ -262,9 +262,9 @@ def axiom_9():
 
 if __name__ == "__main__":
     # guard-recall testing
-    # axiom_3(debug=True)
-    # axiom_4(debug=True)
-    # axiom_6(debug=True)
+    axiom_3(debug=True)
+    axiom_4(debug=True)
+    axiom_6(debug=True)
     # guard-precision testing
     axiom_7(debug=True)
     axiom_8(debug=True)
