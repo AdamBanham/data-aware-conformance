@@ -1,0 +1,33 @@
+<ivy-module version="2.0">
+    <info organisation="prom" module="AdamBanhamExperiements" revision="latest">
+		<description>
+			Version VERSION
+		</description>
+    </info>
+    <dependencies>
+		<dependency org="prom" name="ProM-Plugins" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="ApacheUtils" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="BasicUtils" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="KeyValue" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="CNet" rev="latest" changing="true" transitive="true" />    	
+    	<dependency org="prom" name="CausalActivityGraph" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="CausalActivityMatrix" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="PNetReplayer" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="DataAwareExplorer" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="DataAwareReplayer" rev="latest" changing="true" transitive="true" />    
+    	<dependency org="prom" name="DataPetriNets" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="HeuristicsMiner" rev="latest" changing="true" transitive="true" />	    	
+    	<dependency org="prom" name="Log" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="LogAbstractions" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="LogEnhancement" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="InductiveMiner" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="PetriNets" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="GraphViz" rev="latest" changing="true" transitive="true" />    	
+    	<dependency org="prom" name="EfficientStorage" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="Widgets" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="XESAlignmentExtension" rev="latest" changing="true" transitive="true" />
+    	<dependency org="prom" name="XESLite" rev="latest" changing="true" transitive="true" />
+     	<dependency org="org.projectlombok" name="lombok" rev="1.18.20" />
+     	<dependency org="org.jfree" name="jfreechart" rev="1.5.3" />
+     </dependencies>
+</ivy-module>
