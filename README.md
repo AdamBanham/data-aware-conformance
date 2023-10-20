@@ -81,6 +81,11 @@ activting the pipenv shell (pipenv shell).
  -  `py test_deleoni.py` to rerun testing against the existing techniques proposed
     by Mannhardt for a guard-recall and guard-precision technique.
 
+## Historical Execution of Testing
+
+In the root directory, you will find our historical recordings of standard out
+for our testing scripts in files with the extension `.stdout'.
+
 ### Paper Example - Series of Counterexamples
 The models used in the paper as an example of a series of counterexamples for axioms
  can be found in the `paper example` directory.
