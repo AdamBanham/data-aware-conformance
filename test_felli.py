@@ -1,9 +1,4 @@
 from pmkoalas._logging import info, enable_logging
-
-from os import environ,pathsep
-
-environ['PATH'] += "C:\\yices\\bin\\libyices.dll"
-
 from felli.cocomot import guard_recall
 
 from time import time
@@ -55,7 +50,7 @@ AX_9_LOGS = [
     in range(1,4)
 ]
 
-AX_RERUNS = 2
+AX_RERUNS = 11
 OPTIMISED_RUN = True
 
 @enable_logging
