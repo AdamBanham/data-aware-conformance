@@ -1,4 +1,6 @@
 from pmkoalas.conformance.dataaware import compute_guard_recall,compute_guard_precision
+from pmkoalas.conformance.matching import construct_many_matching,ManyMatching,Path
+from pmkoalas.models.transitiontree import construct_from_model
 from pmkoalas.read import read_xes_complex
 from pmkoalas.models.petrinet import parse_pnml_for_dpn
 from pmkoalas._logging import info, enable_logging
@@ -18,6 +20,9 @@ AX_3_MODELS = [
 AX_4_FOLD = join(AXS_FOLD, "axiom 4")
 AX_4_LOG = join(AX_4_FOLD, "log_1.xes")
 AX_4_MODEL = join(AX_4_FOLD, "ax4_model_1.pnml")
+AX_5_FOLD = join(AXS_FOLD, "axiom 5")
+AX_5_LOG = join(AX_5_FOLD, "log_1.xes")
+AX_5_MODEL = join(AX_5_FOLD, "ax5_model_1.pnml")
 AX_6_FOLD = join(AXS_FOLD, "axiom 6")
 AX_6_MODEL = join(AX_6_FOLD, "ax6_model_1.pnml")
 AX_6_LOGS = [ 
@@ -52,7 +57,7 @@ AX_9_LOGS = [
     in range(1,4)
 ]
 
-AX_RERUNS = 11
+AX_RERUNS = 2
 OPTIMISED_RUN = True
 
 @enable_logging
@@ -110,6 +115,58 @@ def axiom_4():
     info("testing completed for axiom four, to adhere the measure must " +
          "return zero.")
     info(f"outcomes :: {set(results)}")
+
+@enable_logging
+def axiom_5():
+    from pmkoalas.simple import Trace
+    info("testing axiom 5 for proposal of guard-recall.")
+    model = parse_pnml_for_dpn(AX_5_MODEL)
+    log = read_xes_complex(AX_5_LOG)
+    model = parse_pnml_for_dpn(AX_5_MODEL)
+    log = read_xes_complex(AX_5_LOG)
+    least_cost_matching = construct_many_matching(log, 
+                                construct_from_model(model, 4)) 
+    shorter_lcost_matching = construct_many_matching(log, 
+                                construct_from_model(model, 3)) 
+    one_path_matching = ManyMatching(
+        dict(
+            (variant, least_cost_matching[Trace(variant.sequence[:-1]+["F"])])
+             for variant,_ 
+             in least_cost_matching._map.items()
+        )
+    )
+    matching = [
+        ('k-1 least costly', shorter_lcost_matching),
+        ('only use one path', one_path_matching),
+        ('least_costly', least_cost_matching),
+    ]
+    mean_computes = []
+    mean_runtimes = []
+    for test, manymatcher in matching:
+        results = []
+        runtimes = []
+        for run in range(1,AX_RERUNS):
+            info(f"computing run {run}...")
+            stime = time()
+            res = compute_guard_recall(log, model,
+                                       precomputed_matching=manymatcher,
+                                       optimised=True)
+            runtimes.append(time() - stime)
+            results.append(res)
+        mean = sum(results) / len(results)
+        std = [ (res - mean) ** 2 for res in results ]
+        std = sum(std) / len(std)
+        std = sqrt(std)
+        runtimes = sum(runtimes) / len(runtimes)
+        info(f"results for {test} matching of axiom 5 are :: {mean=} | {std=}.")
+        info(f"unique results observed :: {set(results)}.")
+        info(f"mean compute time between runs :: {runtimes:.1f} seconds")
+        mean_runtimes.append(f"{runtimes:.1f}")
+        mean_computes.append((mean,std))
+    info(f"average runtimes for tests : {mean_runtimes}")
+    info("testing completed for axiom five, to adhere the following series" + 
+          " must be strictly increasing from left to right")
+    info(f"outcome (mean,std) :: {mean_computes}")
 
 @enable_logging
 def axiom_6():
@@ -265,27 +322,30 @@ def axiom_9():
 
 @enable_logging
 def test():
-    from pmkoalas.models.transitiontree import construct_from_model
-    from pmkoalas.conformance.matching import construct_many_matching, ExpontentialPathWeighter
-
-    log = read_xes_complex(AX_8_LOG)
-    model = parse_pnml_for_dpn(AX_8_NEG_MODELS[-1])
-    tree = construct_from_model(model, longest_playout=4)
-    matching = construct_many_matching(log, tree)
-    for variant, inst in log:
-        w = ExpontentialPathWeighter(matching[variant])
-        for path in matching[variant]:
-            print(f"[{variant}-{path}] weight :: {w(path, variant)}")
-    print(model)
-    prec = compute_guard_precision(log, model, optimised=True)
-    info(prec)
+    from pmkoalas.simple import Trace
+    model = parse_pnml_for_dpn(AX_5_MODEL)
+    log = read_xes_complex(AX_5_LOG)
+    least_cost_matching = construct_many_matching(log, 
+                                construct_from_model(model, 4)) 
+    one_path_matching = ManyMatching(
+        dict(
+            (variant, least_cost_matching[Trace(["A","B","C","F"])])
+             for variant,_ 
+             in least_cost_matching._map.items()
+        )
+    )
+    matching = [
+        ('only use one path', one_path_matching),
+        ('least_costly', least_cost_matching),
+    ]
 
 if __name__ == "__main__":
     # test(debug=True)
     # guard-recall testing
-    # axiom_3(debug=True)
-    # axiom_4(debug=True)
-    # axiom_6(debug=True)
+    axiom_3(debug=True)
+    axiom_4(debug=True)
+    axiom_5(debug=True)
+    axiom_6(debug=True)
     # guard-precision testing
     axiom_7(debug=True)
     axiom_8(debug=True)
