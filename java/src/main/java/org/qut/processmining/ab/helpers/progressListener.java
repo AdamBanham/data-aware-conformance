@@ -73,10 +73,10 @@ public class progressListener implements Progress, PluginContext {
 		// TODO Auto-generated method stub
 		this.value++;
 		if (this.value % 10 == 0) {
-			System.out.println("[Progress] Completed "+ this.value+"/"+ this.total + " jobs.");
-			System.out.println("[Progress] Current Runtime: "+
-					(new Date().getTime() - this.start) 
-					+ " ms.");
+			// System.out.println("[Progress] Completed "+ this.value+"/"+ this.total + " jobs.");
+			// System.out.println("[Progress] Current Runtime: "+
+			// 		(new Date().getTime() - this.start) 
+			// 		+ " ms.");
 		}
 		
 	}
