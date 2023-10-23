@@ -72,9 +72,9 @@ In order to rerun these experiements, an executable is required to be compiled a
 the python implementation is a little wrapper around the java code used to call
 these techniques.
 
-To reperform testing over the counter-example for guard-recall or guard-precision
+To reperform testing over the counter-examples for guard-recall or guard-precision
 techniques, run one of the following python scripts in the root directory after
-activting the pipenv shell (pipenv shell).
+activting the pipenv shell (`pipenv shell`).
  - `py test_proposal.py` to rerun testing against the proposed implementation
     of guard-recall and guard-precision.
  - `py test_felli.py` to rerun testing against the proposed guard-recall 
@@ -92,13 +92,17 @@ for our testing scripts in files with the extension `.stdout'.
 ### Recomputing measures over paper example
 
 In the root directory, the python script `compute_measures_for_paper.py` when 
-run within the pipenv virtual environment will recompute the measurement in our
-paper for discussion.
+run within the pipenv virtual environment will recompute measurements over 
+the counter-example in our paper's discussion.
 
 ### Paper Example - Series of Counterexamples
-The models used in the paper as an example of a series of counterexamples for axioms
- can be found in the `paper example` directory.
+Both models and log, used in the paper as the series of counter examples for 
+the axioms can be found in the `paper example` directory.
 
-### Model generation
+### Model Generation
 All models were manually created for each counter-example using ProM and the 
 "Edit DPN (Text Language based)" plug-in authored by F.Mannhardt.
+
+### Log Generation
+All logs were produced by running the `generate.py` script, more data attributes
+then the d1 attribute can be found in the log but not used in the testing.
