@@ -25,6 +25,7 @@ AX_6_LOGS = [
 ]
 AX_7_FOLD = join(AXS_FOLD, "axiom 7")
 AX_7_LOG = join(AX_7_FOLD, "log_1.xes")
+AX_7B_LOG = join(AX_7_FOLD, "log_3.xes")
 AX_7_MODELS = [
     join(AX_7_FOLD, f"ax7_model_{i}b.pnml")
     for i 
@@ -143,7 +144,7 @@ def axiom_7():
     info("testing axiom 7 for gprec_M.")
     mean_runtimes = []
     mean_computes = []
-    log = AX_7_LOG
+    log = AX_7B_LOG
     for test_no,model_file in enumerate(AX_7_MODELS):
         results = []
         runtimes = []
