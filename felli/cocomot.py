@@ -663,7 +663,7 @@ def guard_recall(dpn:str, log) -> float:
       avg_dis += alldistances[d] * d
       w += alldistances[d]
     print("timeouts: %d" % timeouts)
-  avg_dis = avg_dis / w
+  avg_dis = -1.0 * (avg_dis / w)
   print(f"Weighted average of distances: {avg_dis:.3f}")
   if opts["json"]:
     print_alignments_json(alignments)
