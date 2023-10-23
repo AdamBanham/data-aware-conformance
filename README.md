@@ -66,8 +66,11 @@ For Felli, see the additional requirements in [this readme](felli/readme.md),
 which includes installing the appropriate binaries for z3 and yices.
 
 For de Leoni and Mannhardt, note that you must have java 8 on path for the 
-testing to be performed. As these techniques were extracted as a jar from the 
-ProM framework (see the [java folder](java/readme.md) for more information).
+testing to be performed. As these techniques are run from a compiled a jar from 
+the ProM framework (see the [java folder](java/readme.md) for more information).
+In order to rerun these experiements, an executable is required to be compiled as
+the python implementation is a little wrapper around the java code used to call
+these techniques.
 
 To reperform testing over the counter-example for guard-recall or guard-precision
 techniques, run one of the following python scripts in the root directory after
@@ -85,6 +88,12 @@ activting the pipenv shell (pipenv shell).
 
 In the root directory, you will find our historical recordings of standard out
 for our testing scripts in files with the extension `.stdout'.
+
+### Recomputing measures over paper example
+
+In the root directory, the python script `compute_measures_for_paper.py` when 
+run within the pipenv virtual environment will recompute the measurement in our
+paper for discussion.
 
 ### Paper Example - Series of Counterexamples
 The models used in the paper as an example of a series of counterexamples for axioms
