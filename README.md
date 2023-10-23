@@ -3,33 +3,34 @@
 An unpublished evaluation for data-aware process conformance using counter-examples for axioms.
 ## Abstract
 
-Process mining, a branch of data mining, uses the observed historical executions 
-of business processes (as recorded in an event log) to uncover and describe 
-their behaviour as a process model. The goal of conformance checking is to 
-ensure that the model is of high quality, and is a good representation of the 
-event log, thus assuring a solid foundation for subsequent analysis of the 
-process. To date, little conformance checking discussions have considered model 
-quality beyond what is determined by the execution order of process activities. 
-However, data-aware models that include data to determine what activity should 
-occur next at runtime are more expressive than those that represent only 
-process activities, which reveals a gap in the current discussion. That is, it 
-is unclear, for models that expresses not only the execution order of process 
-activities, but includes the data that guide the execution, what properties 
-determine the quality of the model. To address this gap, we establish the 
-qualities for data-aware conformance checking, which considers process 
-activities and the data-driven execution described in models. These qualities 
-are directly relevant to decision mining techniques, which annotate process 
-activities in models with data-driven expressions to represent the 
-decision-making of a process. Our major contribution is threefold: i) we 
-present a generalised theory focusing on abstracting the representation of 
-data-aware models, ii) using this theory we present a set of nine axioms that 
-prescribe desirable properties for data-aware conformance checking, and from 
-which, model quality can be ascertained, and iii) we define two measures for 
-model recall and precision which quantify the quality of data-aware models.
-Using our set of axioms as a yardstick, we compared our proposed recall and 
-precision measures with existing measures. Our experimental results showed that 
-existing measures exhibited limited adherence to our axioms; while, our two 
-proposed measures exhibited high adherence to our axioms.
+Process mining, a branch of data mining, uses the observed historical 
+executions of business processes (as recorded in an event log) to uncover and 
+describe their behaviour as a process model. The goal of conformance checking 
+is to ensure that the model is of high quality, and is a good representation 
+of the event log, thus assuring a solid foundation for subsequent analysis of 
+the process. To date, few conformance checking discussions have considered 
+model quality beyond what is determined by the execution order of process 
+activities. Decision mining aims to uncover rules that guide the execution of 
+processes, and hence, to discover overt and tacit decisions that may be 
+considered business rules. Decision mining techniques generate data-aware 
+models where process activities are annotated with data-driven expressions to 
+represent the decision-making of a process. Such models are thus more 
+expressive than those that represent only process activities. With the current 
+notions of conformance checking, it is unclear what properties determine the 
+quality of these data-aware process models.To address this gap, we establish 
+qualities for data-aware conformance checking that consider both process 
+activities and the data-driven execution described in models, such that we can 
+always identify the highest quality model from a collection when given an event 
+log. Our major contribution is threefold: i) we present a generalised theory 
+focusing on abstracting the representation of data-aware models, ii) using 
+this theory we present a set of nine axioms that prescribe desirable properties 
+for data-aware conformance checking, and from which, model quality can be 
+ascertained, and iii) we define two measures for model recall and precision 
+which quantify the quality of data-aware models. Using our set of axioms as 
+a yardstick, we compared our proposed recall and precision measures with 
+existing measures. Our experimental results show that existing measures 
+exhibited limited adherence to our axioms; while, our two proposed measures 
+exhibited high adherence to our axioms.
 
 ## Proposed Implementation
 
@@ -105,4 +106,4 @@ All models were manually created for each counter-example using ProM and the
 
 ### Log Generation
 All logs were produced by running the `generate.py` script, more data attributes
-then the d1 attribute can be found in the log but not used in the testing.
+then the d1 attribute can be found in the log but are not used in the testing.
