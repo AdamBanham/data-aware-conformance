@@ -7,6 +7,8 @@ name = "pypi"
 yices = "*"
 z3-solver = "*"
 pm4py = "==2.2.19.2"
+joblib = "*"
+pyparsing = "*"
 
 [dev-packages]
 
